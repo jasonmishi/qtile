@@ -61,6 +61,53 @@ light_gray = "#d8d9d5"
 mod = "mod4"
 terminal = guess_terminal()
 
+screen = Screen(
+            top=bar.Bar(
+                [
+                    widget.CurrentLayout(foreground=light_gray),
+                    widget.GroupBox(),
+                    widget.Prompt(),
+                    widget.WindowName(),
+                    widget.Chord(
+                        chords_colors={
+                            'launch': ("#ff0000", "#ffffff"),
+                        },
+                        name_transform=lambda name: name.upper(),
+                    ),
+                    widget.Systray(),
+                    widget.Battery(),
+                    widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+                ],
+                32,
+                background = body_dark,
+            ),
+        )
+
+screenNoSystray = Screen(
+                    top=bar.Bar(
+                        [
+                            widget.CurrentLayout(foreground=light_gray),
+                            widget.GroupBox(),
+                            widget.Prompt(),
+                            widget.WindowName(),
+                            widget.Chord(
+                                chords_colors={
+                                    'launch': ("#ff0000", "#ffffff"),
+                                },
+                                name_transform=lambda name: name.upper(),
+                            ),
+                            widget.Battery(),
+                            widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+                        ],
+                        32,
+                        background = body_dark,
+                    ),
+                )
+screens = [ screen ]
+
+if helper.screens.getNumberOfConnectedScreens() == 2:
+    screens.insert(0, screenNoSystray)
+
 keys = [
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
@@ -153,53 +200,6 @@ widget_defaults = dict(
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
-
-screens = [
-    Screen(
-        top=bar.Bar(
-            [
-                widget.CurrentLayout(foreground=light_gray),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        'launch': ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.Systray(),
-                widget.Battery(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-                widget.QuickExit(),
-            ],
-            32,
-            background = body_dark,
-        ),
-    ),
-    Screen(
-        top=bar.Bar(
-            [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        'launch': ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.Systray(),
-                widget.Backlight(backlight_name="intel_backlight", change_command="echo {0} > /sys/class/backlight/intel_backlight/brightness", step=1000),
-                widget.Battery(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-                widget.QuickExit(),
-            ],
-            24,
-        ),
-    ),
-]
 
 # Drag floating layouts.
 mouse = [

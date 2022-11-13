@@ -20,8 +20,8 @@ def setupScreens():
                 f"xrandr --output {secondaryMonitor.get_model()} --mode 1280x960 --right-of {primaryMonitor.get_model()}"
             )
         # TODO: check if you can use EDID to uniquely identify monitors
-        ''' Samsung SyncMaster EDID (Not sure if EDID coes from monitor or HDMI to VGA
-            HDMI to VGA seems to set the size to be same though
+        ''' 
+        Samsung SyncMaster EDID (Not sure if EDID comes from monitor or HDMI to VGA)
         00ffffffffffff0004ef010031304e43
 		2d170103a01e1761eae4de9e544a9723
 		1c4c5400080081808140810001019500
@@ -38,6 +38,24 @@ def setupScreens():
 		00000000000000000000000000000000
 		00000000000000000000000000000000
 		00000000000000000000000000000029
+
+        Acer B193 EDID
+        00ffffffffffff003873752200000000
+        011c0103a01e1764eae4de9e544a9723
+        1c4c5400080081808140810001019500
+        01010101010164190040410026301888
+        360000c010000018023a801871382d40
+        582c4500dd0c1100001e662150b05100
+        1b304070360032313400001e000000fa
+        00819981c081fc01010101950f0a0104
+        02031b61439084022309070783010000
+        67030c0020008028e2000f8c0ad08a20
+        e02d10103e9600a05a00000000000000
+        00000000000000000000000000000000
+        00000000000000000000000000000000
+        00000000000000000000000000000000
+        00000000000000000000000000000000
+        0000000000000000000000000000002e
         '''
 
 def setWallpaper():

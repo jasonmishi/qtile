@@ -59,7 +59,8 @@ gray = "#7a797f"
 light_gray = "#d8d9d5"
 
 mod = "mod4"
-terminal = guess_terminal()
+terminal = "kitty"
+# terminal = guess_terminal()
 
 screen = Screen(
             top=bar.Bar(

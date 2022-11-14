@@ -1,13 +1,12 @@
 from subprocess import CalledProcessError, check_output
 
+
 class System:
-    def __init__(self):
+    def __init__(self, config):
         try:
             output = check_output(["xrandr", "--verbose"])
         except (CalledProcessError, FileNotFoundError) as err:
-            raise RuntimeError(
-                "Error retrieving xrandr util data: {}".format(err)
-            ) from None
+            raise RuntimeError(f"Error retrieving xrandr util data: {err}") from None
 
         self.screens = []
         lines = output.splitlines()
@@ -16,19 +15,29 @@ class System:
             if line.startswith("EDID:"):
                 j = i + 1
                 selection = ""
-                # line has some sort of indentation
+                # line has some sort of indentation in the start
                 while lines[j].decode()[0:2].isspace():
                     selection += lines[j].decode().strip()
-                    j+=1
+                    j += 1
                 i = j
-                self.screens.append(Screen(selection))
-
+                self.screens.append(Screen(selection, config))
 
     def get_screen(self, screenNumber):
         return self.screens[screenNumber]
 
+
 class Screen:
-    def __init__(self, edid):
+    def __init__(self, edid, config):
         self.edid = edid
-
-
+        self.config = config.get("screens")
+        if self.config and self.config.get("edids", False):
+            screenConfig = self.config.get("edids")
+            print(screenConfig)
+            print(self.edid)
+            screenNames = [k for k, v in screenConfig.items() if v == self.edid]
+            # TODO: validation to check for unique
+            if len(screenNames) > 0:
+                print(screenNames[0])
+                self.name = str(screenNames[0])
+            else:
+                self.name = None

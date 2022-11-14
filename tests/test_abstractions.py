@@ -1,12 +1,13 @@
-from helper.abstractions import System
 import string
-import pytest
+
+from helper.abstractions import System
+from helper.config import Config
 
 
 class TestScreen:
+    config = Config()
 
     def test_edid(self):
-        screen = System()
-        assert set(screen.get_screen(0).edid).issubset(string.hexdigits)
-    
-
+        system = System(self.config)
+        screen = system.get_screen(1)
+        assert set(screen.edid).issubset(string.hexdigits)

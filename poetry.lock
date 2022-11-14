@@ -306,7 +306,7 @@ python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 name = "tomli"
 version = "2.0.1"
 description = "A lil' TOML parser"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -330,7 +330,7 @@ testing = ["coverage (>=6.2)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "305496dca155775516d8a55e2db164b14850dfe3731ed511b3498716e92c008e"
+content-hash = "2ce97e510581eb19f36d2d1aa1bbdc95d7ae8e85d5210c22e181a689b9ee65ba"
 
 [metadata.files]
 attrs = [

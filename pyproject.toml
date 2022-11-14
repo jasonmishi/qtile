@@ -9,6 +9,7 @@ packages = [{ include = "helper" }]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+tomli = { version = "^2.0.1", python = "<3.11" }
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.2.0"

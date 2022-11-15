@@ -167,7 +167,7 @@ keys = [
     Key([mod], "p", lazy.to_screen(1), desc="switch to second screen"),
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups = [Group(i) for i in "1234"]
 
 for i in groups:
     keys.extend([

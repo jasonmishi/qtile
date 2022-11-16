@@ -103,6 +103,7 @@ screenNoSystray = Screen(
                                 },
                                 name_transform=lambda name: name.upper(),
                             ),
+                            widget.Pomodoro(prefix_inactive='\ue001 pomo', prefix_active='\ufa1a ', prefix_paused='\uf8e3 \ue004 ', prefix_break='\ue005 ', prefix_long_break='\ue006 ', fontsize=24),
                             widget.Battery(),
                             widget.Clock(format='%d-%m-%Y %a  %H:%M'),
                         ],

@@ -32,17 +32,17 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 # custom imports
-import qtilehelper as helper
+import qtilehelper as qhelper
 
 
 @hook.subscribe.startup_once
 def autostart():
-    helper.screens.setupScreens()
+    qhelper.screens.setupScreens()
 
 
 @hook.subscribe.startup
 def autostart():
-    helper.screens.setWallpaper()
+    qhelper.screens.setWallpaper()
 
 
 # color pallet purple
@@ -108,7 +108,7 @@ screenNoSystray = Screen(
 )
 screens = [screen]
 
-if helper.screens.getNumberOfConnectedScreens() == 2:
+if qhelper.screens.getNumberOfConnectedScreens() == 2:
     screens.insert(0, screenNoSystray)
 
 keys = [

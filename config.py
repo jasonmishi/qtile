@@ -24,6 +24,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import os
 from typing import List  # noqa: F401
 
 from libqtile import bar, hook, layout, widget
@@ -33,11 +34,21 @@ from libqtile.utils import guess_terminal
 
 # custom imports
 import qtilehelper as qhelper
+from helper.abstractions import System
+from helper.config import Config
+
+config = Config()
+system = System(config)
 
 
 @hook.subscribe.startup_once
 def autostart():
-    qhelper.screens.setupScreens()
+    set_up_screens(system.screens)
+
+
+def set_up_screens(screens):
+    for screen in screens:
+        if screen.setup_command: os.system(screen.setup_command)
 
 
 @hook.subscribe.startup
@@ -172,14 +183,14 @@ for i in groups:
                 [mod],
                 i.name,
                 lazy.group[i.name].toscreen(),
-                desc="Switch to group {}".format(i.name),
+                desc=f"Switch to group {i.name}",
             ),
             # mod1 + shift + letter of group = switch to & move focused window to group
             Key(
                 [mod, "shift"],
                 i.name,
                 lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(i.name),
+                desc=f"Switch to & move focused window to group {i.name}",
             ),
             # Or, use below if you prefer not to switch to that group.
             # # mod1 + shift + letter of group = move focused window to group

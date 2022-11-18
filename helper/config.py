@@ -26,7 +26,7 @@ class Config:
     def validate_edids(self):
         screenEdids = self._config["screens"]["edids"]
         # duplicate EDIDS
-        if (len(screenEdids.values()) != len(set(screenEdids.values()))):
+        if len(screenEdids.values()) != len(set(screenEdids.values())):
             raise ConfigError("Duplicate screen EDIDS")
 
     @classmethod

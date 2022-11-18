@@ -39,4 +39,3 @@ class Screen:
                 self.name = str(screenNames[0])
         if self.name and self.config.get("setup-commands", False):
             self.setup_command = self.config.get("setup-commands").get(self.name, None)
-

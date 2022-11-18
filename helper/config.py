@@ -17,6 +17,16 @@ class Config:
         screenConfig = self._config.get("screens", None)
         if screenConfig and screenConfig.get("edids", False):
             self.__clean_edids()
+            self.validate_edids()
+
+    def __clean_edids(self):
+        screenEdids = self._config["screens"]["edids"]
+        screenEdids.update((k, "".join(v.split())) for k, v in screenEdids.items())
+
+    def validate_edids(self):
+        screenEdids = self._config["screens"]["edids"]
+        if (len(screenEdids.values()) != len(set(screenEdids.values()))):
+            raise ConfigError("Duplicate screen EDIDS")
 
     @classmethod
     def from_file(cls, file_path):
@@ -25,6 +35,6 @@ class Config:
     def get(self, key):
         return self._config.get(key, None)
 
-    def __clean_edids(self):
-        screenEdids = self._config["screens"]["edids"]
-        screenEdids.update((k, "".join(v.split())) for k, v in screenEdids.items())
+
+class ConfigError(Exception):
+    pass

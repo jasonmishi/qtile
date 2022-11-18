@@ -30,15 +30,13 @@ class Screen:
     def __init__(self, edid, config):
         self.edid = edid
         self.name = None
-        self.setupCommand = None
+        self.setup_command = None
         self.config = config.get("screens")
         if self.config and self.config.get("edids", False):
             screenConfig = self.config.get("edids")
             screenNames = [k for k, v in screenConfig.items() if v == self.edid]
-            # TODO: validation to check for unique
             if len(screenNames) > 0:
-                print(screenNames[0])
                 self.name = str(screenNames[0])
         if self.name and self.config.get("setup-commands", False):
-            self.setupCommand = self.config.get("setup-commands").get(self.name, None)
+            self.setup_command = self.config.get("setup-commands").get(self.name, None)
 

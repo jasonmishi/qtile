@@ -48,7 +48,8 @@ def autostart():
 
 def set_up_screens(screens):
     for screen in screens:
-        if screen.setup_command: os.system(screen.setup_command)
+        if screen.setup_command:
+            os.system(screen.setup_command)
 
 
 @hook.subscribe.startup
@@ -89,12 +90,24 @@ screen = Screen(
                 name_transform=lambda name: name.upper(),
             ),
             widget.Systray(),
+            widget.TextBox(
+                fmt="\ue266 ", font="FiraCode Nerd Font", fontsize=24, padding=4
+            ),
+            widget.CPUGraph(),
+            widget.TextBox(
+                fmt="\uf69b ", font="FiraCode Nerd Font", fontsize=24, padding=4
+            ),
+            widget.MemoryGraph(),
+            widget.TextBox(
+                fmt="\uf0a0 ", font="FiraCode Nerd Font", fontsize=24, padding=4
+            ),
+            widget.HDDBusyGraph(),
             widget.Battery(),
-            widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+            widget.Clock(format="%d-%m-%Y %a  %H:%M"),
         ],
         32,
         background=body_dark,
-    ),
+    )
 )
 
 screenNoSystray = Screen(
@@ -110,8 +123,16 @@ screenNoSystray = Screen(
                 },
                 name_transform=lambda name: name.upper(),
             ),
+            widget.Pomodoro(
+                prefix_inactive="\ue001 pomo",
+                prefix_active="\ufa1a ",
+                prefix_paused="\uf8e3 \ue004 ",
+                prefix_break="\ue005 ",
+                prefix_long_break="\ue006 ",
+                fontsize=24,
+            ),
             widget.Battery(),
-            widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+            widget.Clock(format="%d-%m-%Y %a  %H:%M"),
         ],
         32,
         background=body_dark,
@@ -173,7 +194,7 @@ keys = [
     Key([mod], "p", lazy.to_screen(1), desc="switch to second screen"),
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups = [Group(i) for i in "1234"]
 
 for i in groups:
     keys.extend(
@@ -217,9 +238,9 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="sans",
+    font="Roboto",
     fontsize=12,
-    padding=3,
+    padding=4,
 )
 extension_defaults = widget_defaults.copy()
 

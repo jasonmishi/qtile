@@ -26,7 +26,7 @@ def setupScreens():
                 f"xrandr --output {secondaryMonitor.get_model()} --mode 1280x960 --right-of {primaryMonitor.get_model()}"
             )
         # TODO: check if you can use EDID to uniquely identify monitors
-        """ 
+        """
         Samsung SyncMaster EDID (Not sure if EDID comes from monitor or HDMI to VGA)
         00ffffffffffff0004ef010031304e43
         2d170103a01e1761eae4de9e544a9723

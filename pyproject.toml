@@ -19,6 +19,7 @@ pyupgrade = "^3.2.2"
 pre-commit = "^2.20.0"
 isort = "^5.10.1"
 tox = "^3.27.1"
+tox-gh-actions = "^2.11.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

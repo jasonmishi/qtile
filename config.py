@@ -30,10 +30,9 @@ from typing import List  # noqa: F401
 from libqtile import bar, hook, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
 
 # custom imports
-import qtilehelper as qhelper
+import qtilehelper.screens as qhelper_screens
 from helper.abstractions import System
 from helper.config import Config
 
@@ -42,7 +41,7 @@ system = System(config)
 
 
 @hook.subscribe.startup_once
-def autostart():
+def set_up_system():
     set_up_screens(system.screens)
 
 
@@ -53,8 +52,8 @@ def set_up_screens(screens):
 
 
 @hook.subscribe.startup
-def autostart():
-    qhelper.screens.setWallpaper()
+def set_wallpaper():
+    qhelper_screens.setWallpaper()
 
 
 # color pallet purple
@@ -74,6 +73,7 @@ light_gray = "#d8d9d5"
 
 mod = "mod4"
 terminal = "kitty"
+# from libqtile.utils import guess_terminal
 # terminal = guess_terminal()
 
 screen = Screen(
@@ -140,7 +140,7 @@ screenNoSystray = Screen(
 )
 screens = [screen]
 
-if qhelper.screens.getNumberOfConnectedScreens() == 2:
+if qhelper_screens.getNumberOfConnectedScreens() == 2:
     screens.insert(0, screenNoSystray)
 
 keys = [

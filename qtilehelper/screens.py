@@ -4,7 +4,7 @@ import os
 import gi
 
 gi.require_version("Gdk", "3.0")
-from gi.repository import Gdk # noqa
+from gi.repository import Gdk  # noqa
 
 
 def getNumberOfConnectedScreens():

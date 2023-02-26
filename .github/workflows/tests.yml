@@ -40,7 +40,7 @@ jobs:
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-root
       - name: run pre-commit hook
-        uses: poetry run pre-commit run --all-files
+        run: poetry run pre-commit run --all-files
   test:
     needs: pre-commit
     strategy:

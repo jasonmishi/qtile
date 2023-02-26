@@ -24,3 +24,12 @@ tox-gh-actions = "^2.11.0"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+markers = [
+    "local: marks tests as to be run on local (deselect with '-m \"not local\"')",
+]
+

@@ -56,8 +56,29 @@ def set_wallpaper():
     qhelper_screens.setWallpaper()
 
 
+"""
+#7339AB
+#625AD8
+#1F9CE4
+#88F4FF
+
+#ff00c1
+#9600ff
+#4900ff
+#00b8ff
+#00fff9
+#00ff9f
+
+#711c91
+#ea00d9
+#0abdc6
+#133e7c
+#091833
+"""
+
+
 # color pallet purple
-body_dark = "#29263b"
+body_dark = "#7339AB"
 body_medium = "#483050"
 body_light = "#918396"
 
@@ -90,20 +111,52 @@ screen = Screen(
                 name_transform=lambda name: name.upper(),
             ),
             widget.Systray(),
+            widget.TextBox(text="\ue0be", fontsize=30, foreground="#625AD8", padding=0),
             widget.TextBox(
-                fmt="\ue266 ", font="FiraCode Nerd Font", fontsize=24, padding=4
+                text="\ue266 ",
+                font="FiraCode Nerd Font",
+                fontsize=24,
+                padding=4,
+                background="#625AD8",
             ),
-            widget.CPUGraph(),
+            widget.CPUGraph(background="#625AD8"),
             widget.TextBox(
-                fmt="\uf69b ", font="FiraCode Nerd Font", fontsize=24, padding=4
+                text="\uf69b ",
+                font="FiraCode Nerd Font",
+                fontsize=24,
+                padding=4,
+                background="#625AD8",
             ),
-            widget.MemoryGraph(),
+            widget.MemoryGraph(background="#625AD8"),
             widget.TextBox(
-                fmt="\uf0a0 ", font="FiraCode Nerd Font", fontsize=24, padding=4
+                text="\uf0a0 ",
+                font="FiraCode Nerd Font",
+                fontsize=24,
+                padding=4,
+                background="#625AD8",
             ),
-            widget.HDDBusyGraph(),
-            widget.Battery(),
-            widget.Clock(format="%d-%m-%Y %a  %H:%M"),
+            widget.HDDBusyGraph(background="#625AD8"),
+            widget.TextBox(
+                text="\ue0be",
+                fontsize=30,
+                foreground="#1f9ce4",
+                background="#625AD8",
+                padding=0,
+            ),
+            widget.Battery(background="#1f9ce4", fontsize="16"),
+            widget.TextBox(
+                fmt="\ue0be",
+                fontsize=30,
+                foreground="#ff00c1",
+                background="#1f9ce4",
+                padding=0,
+            ),
+            widget.Clock(
+                format="%d-%m-%Y %a  %H:%M",
+                background="#ff00c1",
+                font="Roboto Bold",
+                fontsize="16",
+            ),
         ],
         32,
         background=body_dark,

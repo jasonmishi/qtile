@@ -152,7 +152,7 @@ screen = Screen(
                 padding=0,
             ),
             widget.Clock(
-                format="%d-%m-%Y %a  %H:%M",
+                format="%Y-%m-%d %a  %H:%M",
                 background="#ff00c1",
                 font="Roboto Bold",
                 fontsize="16",
@@ -185,7 +185,7 @@ screenNoSystray = Screen(
                 fontsize=24,
             ),
             widget.Battery(),
-            widget.Clock(format="%d-%m-%Y %a  %H:%M"),
+            widget.Clock(format="%Y-%m-%d %a  %H:%M"),
         ],
         32,
         background=body_dark,

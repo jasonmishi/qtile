@@ -112,22 +112,25 @@ screen = Screen(
             ),
             widget.Systray(),
             widget.TextBox(text="\ue0be", fontsize=30, foreground="#625AD8", padding=0),
+
             widget.TextBox(
-                text="\ue266 ",
+                text="\uf4bc ",
                 font="FiraCode Nerd Font",
                 fontsize=24,
                 padding=4,
                 background="#625AD8",
             ),
             widget.CPUGraph(background="#625AD8"),
+
             widget.TextBox(
-                text="\uf69b ",
+                text="\ueb7f ",
                 font="FiraCode Nerd Font",
                 fontsize=24,
                 padding=4,
                 background="#625AD8",
             ),
             widget.MemoryGraph(background="#625AD8"),
+
             widget.TextBox(
                 text="\uf0a0 ",
                 font="FiraCode Nerd Font",
@@ -136,6 +139,7 @@ screen = Screen(
                 background="#625AD8",
             ),
             widget.HDDBusyGraph(background="#625AD8"),
+
             widget.TextBox(
                 text="\ue0be",
                 fontsize=30,

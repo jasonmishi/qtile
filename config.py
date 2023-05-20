@@ -245,6 +245,8 @@ keys = [
     # Focus different screens
     Key([mod], "o", lazy.to_screen(0), desc="switch to first screen"),
     Key([mod], "p", lazy.to_screen(1), desc="switch to second screen"),
+    # toggle window between floating and not
+    Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating"),
 ]
 
 groups = [Group(i) for i in "1234"]

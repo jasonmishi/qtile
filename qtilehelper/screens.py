@@ -17,7 +17,7 @@ def getNumberOfConnectedScreens():
 
 
 def setWallpaper():
-    path = "/home/jason/Personal/Pictures/wallpaper/"
+    path = "/home/jasonmishi/Personal/Pictures/wallpaper/"
     wallpapers = os.listdir(path)
     day = int(datetime.datetime.now().timestamp()) // 86400
     wallpaper1_path = path + wallpapers[day % len(wallpapers)]

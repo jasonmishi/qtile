@@ -188,7 +188,7 @@ screenNoSystray = Screen(
 screens = [screen]
 
 if qhelper_screens.getNumberOfConnectedScreens() == 2:
-    screens.insert(0, screenNoSystray)
+    screens.append(screenNoSystray)
 
 keys = [
     # Switch between windows

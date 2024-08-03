@@ -1,14 +1,19 @@
 import datetime
 import os
-
-import gi
-
-gi.require_version("Gdk", "3.0")
-from gi.repository import Gdk  # noqa
+from subprocess import check_output
 
 
 def getNumberOfConnectedScreens():
-    return Gdk.Display.get_default().get_n_monitors()
+    output = [
+        screen for screen in check_output(["xrandr"]).decode("utf-8").splitlines()
+    ]
+    return len(
+        [
+            screen_line.split()[0]
+            for screen_line in output
+            if " connected " in screen_line
+        ]
+    )
 
 
 def setWallpaper():

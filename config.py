@@ -57,23 +57,39 @@ def set_wallpaper():
 
 
 """
-#7339AB
-#625AD8
-#1F9CE4
-#88F4FF
-
-#ff00c1
-#9600ff
-#4900ff
-#00b8ff
-#00fff9
-#00ff9f
-
-#711c91
-#ea00d9
-#0abdc6
-#133e7c
-#091833
+# Gruvbox-material medium color pallete - https://github.com/sainnhe/gruvbox-material
+#1b1b1b
+#282828
+#32302f
+#45403d
+#45403d
+#5a524c
+#32302f
+#3a3735
+#504945
+#34381b
+#3b4439
+#402120
+#4c3432
+#0e363e
+#374141
+#4f422e
+#3c3836
+#d4be98
+#ddc7a1
+#ea6962
+#e78a4e
+#d8a657
+#a9b665
+#89b482
+#7daea3
+#d3869b
+#ea6962
+#a9b665
+#d8a657
+#7c6f64
+#928374
+#a89984
 """
 
 
@@ -90,7 +106,7 @@ bbody_light = "#a1bded"
 # color pallet keys
 black = "#101012"
 gray = "#7a797f"
-light_gray = "#d8d9d5"
+light_gray = "#ddc7a1"
 
 mod = "mod4"
 terminal = "kitty"

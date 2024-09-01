@@ -59,11 +59,12 @@ def set_wallpaper():
 """
 # Gruvbox-material medium color pallete - https://github.com/sainnhe/gruvbox-material
 #1b1b1b
-#282828
-#32302f
-#45403d
-#45403d
-#5a524c
+bg0=#282828
+bg1=#32302f
+bg2=#32302f
+bg3=#45403d
+bg4=#45403d
+bg5=#5a524c
 #32302f
 #3a3735
 #504945
@@ -75,38 +76,44 @@ def set_wallpaper():
 #374141
 #4f422e
 #3c3836
-#d4be98
-#ddc7a1
-#ea6962
-#e78a4e
-#d8a657
-#a9b665
-#89b482
-#7daea3
-#d3869b
-#ea6962
-#a9b665
-#d8a657
-#7c6f64
-#928374
-#a89984
+fg0=#d4be98
+fg1=#ddc7a1
+red=#ea6962
+orange=#e78a4e
+yellow=#d8a657
+green=#a9b665
+aqua=#89b482
+Blue=#7daea3
+purple=#d3869b
+bg_red=#ea6962
+bg_green=#a9b665
+bg_yellow=#d8a657
+grey0=#7c6f64
+grey1=#928374
+grey2=#a89984
 """
+bg0 = "#282828"
+bg1 = "#32302f"
+bg2 = "#32302f"
+bg3 = "#45403d"
+bg4 = "#45403d"
+bg5 = "#5a524c"
+fg0 = "#d4be98"
+fg1 = "#ddc7a1"
+red = "#ea6962"
+orange = "#e78a4e"
+yellow = "#d8a657"
+green = "#a9b665"
+aqua = "#89b482"
+blue = "#7daea3"
+purple = "#d3869b"
+bg_red = "#ea6962"
+bg_green = "#a9b665"
+bg_yellow = "#d8a657"
+grey0 = "#7c6f64"
+grey1 = "#928374"
+grey2 = "#a89984"
 
-
-# color pallet purple
-body_dark = "#7339AB"
-body_medium = "#483050"
-body_light = "#918396"
-
-# color pallet blue
-bbody_dark = "#31394c"
-bbody_medium = "#4c5784"
-bbody_light = "#a1bded"
-
-# color pallet keys
-black = "#101012"
-gray = "#7a797f"
-light_gray = "#ddc7a1"
 
 mod = "mod4"
 terminal = "kitty"
@@ -116,10 +123,20 @@ terminal = "kitty"
 screen = Screen(
     top=bar.Bar(
         [
-            widget.CurrentLayout(foreground=light_gray),
-            widget.GroupBox(),
-            widget.Prompt(),
-            widget.WindowName(),
+            widget.CurrentLayout(foreground=fg1, fontsize=24),
+            widget.GroupBox(
+                disable_drag=True,
+                fontsize=16,
+                active=fg1,
+                inactive=bg5,
+                other_screen_border=bg5,
+                other_current_screen_border=bg3,
+                this_current_screen_border=orange,
+                this_screen_border=yellow,
+                urgent_border=red,
+            ),
+            widget.Prompt(foreground=fg1, fontsize=20),
+            widget.WindowName(foreground=fg1, fontsize=16),
             widget.Chord(
                 chords_colors={
                     "launch": ("#ff0000", "#ffffff"),
@@ -127,79 +144,199 @@ screen = Screen(
                 name_transform=lambda name: name.upper(),
             ),
             widget.Systray(),
-            widget.TextBox(text="\ue0be", fontsize=30, foreground="#625AD8", padding=0),
+            widget.TextBox(text=" ", fontsize=0, padding=6),
+            widget.TextBox(text="", fontsize=30, foreground=grey2, padding=0),
             widget.TextBox(
                 text="\uf4bc ",
                 font="FiraCode Nerd Font",
                 fontsize=24,
                 padding=4,
-                background="#625AD8",
+                background=grey2,
+                foreground=bg3,
             ),
-            widget.CPUGraph(background="#625AD8"),
+            widget.CPUGraph(
+                fill_color=blue,
+                graph_color=aqua,
+                border_color=bg4,
+                background=grey2,
+            ),
             widget.TextBox(
                 text="\ueb7f ",
                 font="FiraCode Nerd Font",
                 fontsize=24,
                 padding=4,
-                background="#625AD8",
+                background=grey2,
+                foreground=bg3,
             ),
-            widget.MemoryGraph(background="#625AD8"),
+            widget.MemoryGraph(
+                fill_color=blue,
+                graph_color=aqua,
+                border_color=bg4,
+                background=grey2,
+            ),
             widget.TextBox(
                 text="\uf0a0 ",
                 font="FiraCode Nerd Font",
                 fontsize=24,
                 padding=4,
-                background="#625AD8",
+                background=grey2,
+                foreground=bg3,
             ),
-            widget.HDDBusyGraph(background="#625AD8"),
-            widget.TextBox(
-                text="\ue0be",
-                fontsize=30,
-                foreground="#1f9ce4",
-                background="#625AD8",
-                padding=0,
+            widget.HDDBusyGraph(
+                fill_color=blue,
+                graph_color=aqua,
+                border_color=bg4,
+                background=grey2,
             ),
-            widget.Battery(background="#1f9ce4", fontsize="16", battery=0),
-            widget.Battery(background="#1f9ce4", fontsize="16", battery=1),
+            widget.TextBox(text="", fontsize=30, foreground=grey2, padding=0),
+            widget.TextBox(text=" ", fontsize=0, padding=6),
+            widget.TextBox(text="", fontsize=30, foreground=bg_green, padding=0),
+            widget.Battery(
+                background=bg_green,
+                foreground=bg3,
+                fontsize=24,
+                battery=0,
+                not_charging_char="󱐋",
+                charge_char="󰂄",
+                discharge_char="󰁼",
+                empty_char="󰂎",
+                font="FiraCode Nerd Font",
+                format="{char}",
+            ),
+            widget.Battery(
+                background=bg_green,
+                foreground=bg3,
+                fontsize=20,
+                battery=0,
+                format="{percent:2.0%} {hour:d}:{min:02d}",
+            ),
+            widget.Battery(
+                background=bg_green,
+                foreground=bg3,
+                fontsize=24,
+                battery=1,
+                not_charging_char="󱐋",
+                charge_char="󰂄",
+                discharge_char="󰁼",
+                empty_char="󰂎",
+                font="FiraCode Nerd Font",
+                format="{char}",
+            ),
+            widget.Battery(
+                background=bg_green,
+                foreground=bg3,
+                fontsize=20,
+                battery=1,
+                format="{percent:2.0%} {hour:d}:{min:02d}",
+            ),
+            widget.TextBox(text="", fontsize=30, foreground=bg_green, padding=0),
+            widget.TextBox(text=" ", fontsize=24, padding=2),
+            widget.TextBox(text="", fontsize=30, foreground=purple, padding=0),
             widget.TextBox(
-                fmt="\ue0be",
-                fontsize=30,
-                foreground="#ff00c1",
-                background="#1f9ce4",
-                padding=0,
+                text="󰃰",
+                font="FiraCode Nerd Font",
+                fontsize=24,
+                background=purple,
+                foreground=bg3,
             ),
             widget.Clock(
-                format="%Y-%m-%d %a  %H:%M",
-                background="#ff00c1",
-                font="Roboto Bold",
-                fontsize="16",
+                format="%Y-%m-%d %a %H:%M",
+                background=purple,
+                foreground=bg3,
+                # font="Roboto Bold",
+                fontsize=20,
             ),
+            widget.TextBox(text="", fontsize=30, foreground=purple, padding=0),
+            widget.TextBox(text=" ", fontsize=0, padding=6),
         ],
         32,
-        background=body_dark,
+        background=bg0,
+        border_width=[4, 4, 12, 0],
+        border_color=bg0,
     )
 )
 
 screenNoSystray = Screen(
     top=bar.Bar(
         [
-            widget.CurrentLayout(foreground=light_gray),
-            widget.GroupBox(),
-            widget.Prompt(),
-            widget.WindowName(),
-            widget.Chord(
-                chords_colors={
-                    "launch": ("#ff0000", "#ffffff"),
-                },
-                name_transform=lambda name: name.upper(),
+            widget.CurrentLayout(foreground=fg1, fontsize=24),
+            widget.GroupBox(
+                disable_drag=True,
+                fontsize=16,
+                active=fg1,
+                inactive=bg5,
+                other_screen_border=bg5,
+                other_current_screen_border=bg3,
+                this_current_screen_border=orange,
+                this_screen_border=yellow,
+                urgent_border=red,
             ),
-            widget.Battery(battery=0),
-            widget.Battery(battery=1),
-            widget.Clock(format="%Y-%m-%d %a  %H:%M"),
+            widget.WindowName(foreground=fg1, fontsize=16),
+            widget.TextBox(text=" ", fontsize=0, padding=6),
+            widget.TextBox(text="", fontsize=30, foreground=bg_green, padding=0),
+            widget.Battery(
+                background=bg_green,
+                foreground=bg3,
+                fontsize=24,
+                battery=0,
+                not_charging_char="󱐋",
+                charge_char="󰂄",
+                discharge_char="󰁼",
+                empty_char="󰂎",
+                font="FiraCode Nerd Font",
+                format="{char}",
+            ),
+            widget.Battery(
+                background=bg_green,
+                foreground=bg3,
+                fontsize=20,
+                battery=0,
+                format="{percent:2.0%} {hour:d}:{min:02d}",
+            ),
+            widget.Battery(
+                background=bg_green,
+                foreground=bg3,
+                fontsize=24,
+                battery=1,
+                not_charging_char="󱐋",
+                charge_char="󰂄",
+                discharge_char="󰁼",
+                empty_char="󰂎",
+                font="FiraCode Nerd Font",
+                format="{char}",
+            ),
+            widget.Battery(
+                background=bg_green,
+                foreground=bg3,
+                fontsize=20,
+                battery=1,
+                format="{percent:2.0%} {hour:d}:{min:02d}",
+            ),
+            widget.TextBox(text="", fontsize=30, foreground=bg_green, padding=0),
+            widget.TextBox(text=" ", fontsize=24, padding=2),
+            widget.TextBox(text="", fontsize=30, foreground=purple, padding=0),
+            widget.TextBox(
+                text="󰃰",
+                font="FiraCode Nerd Font",
+                fontsize=24,
+                background=purple,
+                foreground=bg3,
+            ),
+            widget.Clock(
+                format="%Y-%m-%d %a %H:%M",
+                background=purple,
+                foreground=bg3,
+                # font="Roboto Bold",
+                fontsize=20,
+            ),
+            widget.TextBox(text="", fontsize=30, foreground=purple, padding=0),
+            widget.TextBox(text=" ", fontsize=0, padding=6),
         ],
         32,
-        background=body_dark,
-    ),
+        background=bg0,
+        border_width=[4, 4, 12, 0],
+        border_color=bg0,
+    )
 )
 screens = [screen]
 

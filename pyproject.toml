@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "jasonmishi_qtile_config"
+version = "0.1.0"
+description = "jasonmishi's qtile config"
+authors = ["Jason Mishike <jasonmishi@gmail.com>"]
+license = "GNU GPLv3"
+
+packages = [{ include = "helper" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+tomli = "^2.0.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.2.0"
+black = "^22.10.0"
+flake8 = "^5.0.4"
+pyupgrade = "^3.2.2"
+pre-commit = "^2.20.0"
+isort = "^5.10.1"
+tox = "^3.27.1"
+tox-gh-actions = "^2.11.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+markers = [
+    "local: marks tests as to be run on local (deselect with '-m \"not local\"')",
+]
+

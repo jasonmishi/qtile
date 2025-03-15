@@ -1,6 +1,16 @@
 [screens]
 
 [screens.edids]
+eDP-1 = """
+    00ffffffffffff0030e4210500000000
+    001a0104951f1178ea9d35945c558f29
+    1e505400000001010101010101010101
+    0101010101012e3680a070381f403020
+    350035ae1000001a542b80a070381f40
+    3020350035ae1000001a000000fe004c
+    4720446973706c61790a2020000000fe
+    004c503134305746362d535042370074
+    """
 acerB193 = """
     00ffffffffffff003873752200000000
     011c0103a01e1764eae4de9e544a9723
@@ -39,6 +49,7 @@ samsungSyncMaster = """
     """
 
 [screens.setup-commands]
+eDP-1 = "xrandr --output eDP-1 --mode 1600x900"
 acerB193 = "xrandr --output HDMI-2 --mode 1280x960 --right-of eDP-1"
 samsungSyncMaster = "xrandr --output HDMI-2 --mode 1920x1080 --right-of eDP-1"
 

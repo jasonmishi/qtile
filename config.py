@@ -40,11 +40,6 @@ config = Config()
 system = System(config)
 
 
-@hook.subscribe.startup_once
-def set_up_system():
-    set_up_screens(system.screens)
-
-
 def set_up_screens(screens):
     for screen in screens:
         if screen.setup_command:
@@ -52,7 +47,8 @@ def set_up_screens(screens):
 
 
 @hook.subscribe.startup
-def set_wallpaper():
+def start_up():
+    set_up_screens(system.screens)
     qhelper_screens.setWallpaper()
 
 
